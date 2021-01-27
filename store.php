@@ -18,6 +18,7 @@ $currentTime = date("Y/m/d H:i:s");
 
 // DBへのデータ保存
 $task = new Task();
+// createの定義元はどこ？(function〜)のこと
 $task->create([$title, $contents, $currentTime]);
 
 // リダイレクト
