@@ -1,5 +1,6 @@
 <?php
 
+// dbconnect.phpのコードを読み込んでいる → 
 require_once('dbconnect.php');
 
 class Model
