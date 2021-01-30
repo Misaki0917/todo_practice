@@ -16,11 +16,6 @@ $tasks = $task->getAll();
 // var_dump($tasks); → 下のHTMLファイルも読み込まれている
 // die; → ここで処理が止まる
 
-
-// データの取得
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
