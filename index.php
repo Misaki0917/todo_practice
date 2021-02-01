@@ -1,12 +1,20 @@
 <?php
-// トップページ
-// タスクの一覧表示機能
-// ファイルの読み込み
+// データベースとの接続
+// class Task が使えるようになった
+// getAll()というメソッドをindex.phpから実行したい
+// → class Modelを継承する → class Taskを読み込む
+require_once('Models/Task.php');
 
+// 文字化けしないように読み込んでいるコード
+require_once('function.php');
 
-// データの取得
+// SQL文を用意・実行する(select文)
+$task = new Task();
+$tasks = $task->getAll();
 
-
+// $tasksにデータが入っているか確認できた【デバック作業】
+// var_dump($tasks); → 下のHTMLファイルも読み込まれている
+// die; → ここで処理が止まる
 
 ?>
 <!DOCTYPE html>
@@ -54,13 +62,14 @@
         </div>
 
         <div class="row p-3">
+            <?php foreach($tasks as $task) : ?>
             <div class="col-sm-6 col-md-4 col-lg-3 py-3 py-3">
                 <div class="card">
                     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">ここにタイトル</h5>
+                        <h5 class="card-title"><?php echo h($task["title"]); ?></h5>
                         <p class="card-text">
-                            ここに詳細
+                            <?php echo h($task["contents"]); ?>
                         </p>
                         <div class="text-right d-flex justify-content-end">
                             <!-- * href内を変更する -->
@@ -74,6 +83,7 @@
                     </div>
                 </div>
             </div>
+            <?php endforeach; ?>
         </div>
     </div>
 
